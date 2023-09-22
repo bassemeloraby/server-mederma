@@ -12,6 +12,8 @@ const getAllDrugs = asyncHandler(async (req, res) => {
         TradeName: 1,
         ScientificName: 1,
         PublicPrice: 1,
+        Strength: 1,
+        StrengthUnit: 1,
         PharmaceuticalForm: 1,
         ScientificDescriptionCodeRoot: 1,
       }
