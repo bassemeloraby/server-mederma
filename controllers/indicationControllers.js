@@ -6,6 +6,7 @@ const asyncHandler = require("express-async-handler");
 // @access  public
 const getAllIndications = asyncHandler(async (req, res) => {
   const allIndication = await indication.find();
+  res.header("Access-Control-Allow-Origin", "*");
   res.status(200).json(allIndication);
 });
 
