@@ -10,6 +10,7 @@ const getAllIndications = asyncHandler(async (req, res) => {
       INDICATION: 1,
       ICD_10_CODE: 1,
       SCIENTIFIC_NAME: 1,
+      PHARMACEUTICAL_FORM: 1,
     });
   res.status(200).json(allIndication);
 });
