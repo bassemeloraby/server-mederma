@@ -32,30 +32,25 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     skinSenstivety: {
-      type: Boolean,
-      defultValue: false,
+      type: String,
     },
     normalSkin: {
-      type: Boolean,
-      defultValue: false,
+      type: String,
     },
     drySkin: {
-      type: Boolean,
-      defultValue: false,
+      type: String,
     },
     oilySkin: {
-      type: Boolean,
-      defultValue: false,
+      type: String,
     },
     combinationSkin: {
-      type: Boolean,
-      defultValue: false,
+      type: String,
     },
     price: {
-      type: Boolean,
+      type: String,
     },
     picLink: {
-      type: Boolean,
+      type: String,
     },
   },
   {
