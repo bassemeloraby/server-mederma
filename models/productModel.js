@@ -49,7 +49,7 @@ const productSchema = mongoose.Schema(
     atopicSkin: {
       type: String,
     },
-    acne_poreSkin: {
+    aknePoreSkin: {
       type: String,
     },
     hyperpigmentedSkin: {

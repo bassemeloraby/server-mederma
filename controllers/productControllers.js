@@ -30,7 +30,7 @@ const setProduct = asyncHandler(async (req, res) => {
     oilySkin: req.body.oilySkin,
     combinationSkin: req.body.combinationSkin,
     atopicSkin: req.body.atopicSkin,
-    acne_poreSkin: req.body.acne_poreSkin,
+    aknePoreSkin: req.body.aknePoreSkin,
     hyperpigmentedSkin: req.body.hyperpigmentedSkin,
     flushedSkin: req.body.flushedSkin,
     price: req.body.price,
