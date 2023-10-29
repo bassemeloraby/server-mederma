@@ -46,10 +46,34 @@ const productSchema = mongoose.Schema(
     combinationSkin: {
       type: String,
     },
+    atopicSkin: {
+      type: String,
+    },
+    acne_poreSkin: {
+      type: String,
+    },
+    hyperpigmentedSkin: {
+      type: String,
+    },
+    flushedSkin: {
+      type: String,
+    },
     price: {
       type: String,
     },
     picLink: {
+      type: String,
+    },
+    soapFree: {
+      type: String,
+    },
+    paraffinFree: {
+      type: String,
+    },
+    fregranceFree: {
+      type: String,
+    },
+    dose: {
       type: String,
     },
   },

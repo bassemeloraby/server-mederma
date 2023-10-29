@@ -29,8 +29,16 @@ const setProduct = asyncHandler(async (req, res) => {
     drySkin: req.body.drySkin,
     oilySkin: req.body.oilySkin,
     combinationSkin: req.body.combinationSkin,
+    atopicSkin: req.body.atopicSkin,
+    acne_poreSkin: req.body.acne_poreSkin,
+    hyperpigmentedSkin: req.body.hyperpigmentedSkin,
+    flushedSkin: req.body.flushedSkin,
     price: req.body.price,
     picLink: req.body.picLink,
+    soapFree: req.body.soapFree,
+    paraffinFree: req.body.paraffinFree,
+    fregranceFree: req.body.fregranceFree,
+    dose: req.body.dose,
   });
   res.status(200).json(product);
 });
