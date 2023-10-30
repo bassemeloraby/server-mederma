@@ -10,6 +10,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a value"],
     },
+    // company product type to use in links to products
+    compProType: {
+      type: String,
+    },
     form: {
       type: String,
     },
@@ -31,6 +35,7 @@ const productSchema = mongoose.Schema(
     usedArea2: {
       type: String,
     },
+    // -----skin kinds-----//
     skinSenstivety: {
       type: String,
     },
@@ -56,6 +61,12 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     flushedSkin: {
+      type: String,
+    },
+    irritatedSkin: {
+      type: String,
+    },
+    damagedSkin: {
       type: String,
     },
     price: {

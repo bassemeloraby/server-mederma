@@ -17,6 +17,7 @@ const setProduct = asyncHandler(async (req, res) => {
   const product = await Product.create({
     Description: req.body.Description,
     Company: req.body.Company,
+    compProType: req.body.compProType,
     form: req.body.form,
     companyCategory1: req.body.companyCategory1,
     companyCategory2: req.body.companyCategory2,
@@ -33,6 +34,8 @@ const setProduct = asyncHandler(async (req, res) => {
     aknePoreSkin: req.body.aknePoreSkin,
     hyperpigmentedSkin: req.body.hyperpigmentedSkin,
     flushedSkin: req.body.flushedSkin,
+    irritatedSkin: req.body.irritatedSkin,
+    damagedSkin: req.body.damagedSkin,
     price: req.body.price,
     picLink: req.body.picLink,
     soapFree: req.body.soapFree,
