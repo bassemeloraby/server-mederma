@@ -42,6 +42,7 @@ const setProduct = asyncHandler(async (req, res) => {
     paraffinFree: req.body.paraffinFree,
     fregranceFree: req.body.fregranceFree,
     dose: req.body.dose,
+    intBarcode: req.body.intBarcode,
   });
   res.status(200).json(product);
 });

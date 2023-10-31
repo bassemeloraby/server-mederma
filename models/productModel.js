@@ -87,6 +87,10 @@ const productSchema = mongoose.Schema(
     dose: {
       type: String,
     },
+    // international Barcode
+    intBarcode: {
+      type: String,
+    },
   },
   {
     timestamps: true,
