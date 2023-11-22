@@ -36,7 +36,7 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     // -----skin kinds-----//
-    skinSenstivety: {
+    skinSensitivety: {
       type: String,
     },
     normalSkin: {
