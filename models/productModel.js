@@ -36,7 +36,7 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     // -----skin kinds-----//
-    skinSensitivety: {
+    skinSensitivity: {
       type: String,
     },
     normalSkin: {
@@ -89,6 +89,9 @@ const productSchema = mongoose.Schema(
     },
     // international Barcode
     intBarcode: {
+      type: String,
+    },
+    intBarcode1: {
       type: String,
     },
   },

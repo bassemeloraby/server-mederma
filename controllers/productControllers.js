@@ -25,7 +25,7 @@ const setProduct = asyncHandler(async (req, res) => {
     use2: req.body.use2,
     usedArea1: req.body.usedArea1,
     usedArea2: req.body.usedArea2,
-    skinSensitivety: req.body.skinSensitivety,
+    skinSensitivity: req.body.skinSensitivity,
     normalSkin: req.body.normalSkin,
     drySkin: req.body.drySkin,
     oilySkin: req.body.oilySkin,
@@ -43,6 +43,7 @@ const setProduct = asyncHandler(async (req, res) => {
     fregranceFree: req.body.fregranceFree,
     dose: req.body.dose,
     intBarcode: req.body.intBarcode,
+    intBarcode1: req.body.intBarcode1,
   });
   res.status(200).json(product);
 });
