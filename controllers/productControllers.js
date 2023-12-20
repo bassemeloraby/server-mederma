@@ -16,6 +16,8 @@ const getProducts = asyncHandler(async (req, res) => {
 const setProduct = asyncHandler(async (req, res) => {
   const product = await Product.create({
     Description: req.body.Description,
+    Strength: req.body.Strength,
+    StrengthUnit: req.body.StrengthUnit,
     Company: req.body.Company,
     compProType: req.body.compProType,
     form: req.body.form,

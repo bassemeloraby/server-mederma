@@ -6,6 +6,12 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a value"],
     },
+    Strength: {
+      type: String,
+    },
+    StrengthUnit: {
+      type: String,
+    },
     Company: {
       type: String,
       required: [true, "Please add a value"],
