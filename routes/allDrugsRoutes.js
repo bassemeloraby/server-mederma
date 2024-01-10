@@ -1,9 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { getAllDrugs
-} = require('../controllers/allDrugsControllers');
+const {
+  getAllDrugs,
+  getOneDrug,
+} = require("../controllers/allDrugsControllers");
 
-router.route('/').get(getAllDrugs)
-
+router.route("/").get(getAllDrugs);
+router.route("/:_id").get(getOneDrug);
 
 module.exports = router;
