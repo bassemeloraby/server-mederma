@@ -6,7 +6,7 @@ const asyncHandler = require("express-async-handler");
 // @access  public
 const getAllDrugs = asyncHandler(async (req, res) => {
   const allDrug = await allDrugs
-    .find()
+    .find({})
     .sort({ TradeName: 1 });
   res.status(200).json(allDrug);
 });
