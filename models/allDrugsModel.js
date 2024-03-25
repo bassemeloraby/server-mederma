@@ -1,12 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const allDrugsSchema = mongoose.Schema(
-  {
-    ScientificName: String,
+const allDrugsSchema = mongoose.Schema({
+  TradeName: {
+    type: String,
+    required: [true, "Please add a value"],
   },
-  {
-    TradeName: String,
-  }
-);
+  ScientificName: {
+    type: String,
+    required: [true, "Please add a value"],
+  },
+});
 
-module.exports = mongoose.model('allDrugs', allDrugsSchema);
+module.exports = mongoose.model("alldrugs", allDrugsSchema);
