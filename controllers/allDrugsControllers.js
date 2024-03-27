@@ -65,9 +65,29 @@ const deleteDrug = asyncHandler(async (req, res) => {
   res.status(200).json({ _id: req.params.id });
 });
 
+// @desc    Update drug
+// @route   PUT /api/allDrugs/:id
+// @access  public
+const updateDrug = asyncHandler(async (req, res) => {
+  const product = await alldrugs.findById(req.params.id);
+  if (!product) {
+    res.status(400).json({ message: "product not found" });
+  }
+
+  const updatedDrug = await alldrugs.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
+  res.status(200).json(updatedDrug);
+});
+
 module.exports = {
   getAllDrugs,
   getOneDrug,
   setDrug,
   deleteDrug,
+  updateDrug
 };
