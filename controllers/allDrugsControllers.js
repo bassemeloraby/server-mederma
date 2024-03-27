@@ -23,10 +23,10 @@ const getAllDrugs = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get one drug
-// @route   GET /api/drugs/:id
+// @route   GET /api/allDrugs/:id
 // @access  public
 const getOneDrug = asyncHandler(async (req, res) => {
-  const drugs = await alldrugs.find({ _id: req.params._id });
+  const drugs = await alldrugs.find({ _id: req.params.id });
   if (!drugs) {
     res.status(400).json({ message: "not found" });
   }
@@ -44,7 +44,6 @@ const setDrug = asyncHandler(async (req, res) => {
     const drug = await alldrugs.create({
       TradeName: req.body.TradeName,
       ScientificName: req.body.ScientificName,
-      
     });
     res.status(200).json(drug);
   } catch (error) {
@@ -52,8 +51,23 @@ const setDrug = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Delete drug
+// @route   DELETE /api/allDrugs/:id
+// @access  public
+const deleteDrug = asyncHandler(async (req, res) => {
+  // const company = await Company.findById(req.params.id)
+  const drug = await alldrugs.findById(req.params.id);
+
+  if (!drug) {
+    res.status(400).json({ message: "drug not found" });
+  }
+  await drug.deleteOne();
+  res.status(200).json({ _id: req.params.id });
+});
+
 module.exports = {
   getAllDrugs,
   getOneDrug,
   setDrug,
+  deleteDrug,
 };
