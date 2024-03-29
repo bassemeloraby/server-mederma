@@ -44,6 +44,8 @@ const setDrug = asyncHandler(async (req, res) => {
     const drug = await alldrugs.create({
       TradeName: req.body.TradeName,
       ScientificName: req.body.ScientificName,
+      Strength: req.body.Strength,
+      StrengthUnit: req.body.StrengthUnit,
     });
     res.status(200).json(drug);
   } catch (error) {

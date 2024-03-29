@@ -9,6 +9,12 @@ const allDrugsSchema = mongoose.Schema({
     type: String,
     required: [true, "Please add a value"],
   },
+  Strength: {
+    type: String,
+  },
+  StrengthUnit: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("alldrugs", allDrugsSchema);
