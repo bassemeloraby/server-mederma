@@ -17,11 +17,9 @@ const allDrugsSchema = mongoose.Schema({
   },
   wasfaty: {
     type: Boolean,
-    default: false,
   },
   list: {
     type: Boolean,
-    default: false,
   },
 });
 
