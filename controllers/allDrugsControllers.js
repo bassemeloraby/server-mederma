@@ -46,6 +46,8 @@ const setDrug = asyncHandler(async (req, res) => {
       ScientificName: req.body.ScientificName,
       Strength: req.body.Strength,
       StrengthUnit: req.body.StrengthUnit,
+      wasfaty: req.body.wasfaty,
+      list: req.body.list,
     });
     res.status(200).json(drug);
   } catch (error) {

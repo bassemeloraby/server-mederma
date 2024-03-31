@@ -15,6 +15,14 @@ const allDrugsSchema = mongoose.Schema({
   StrengthUnit: {
     type: String,
   },
+  wasfaty: {
+    type: Boolean,
+    default: false,
+  },
+  list: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("alldrugs", allDrugsSchema);
