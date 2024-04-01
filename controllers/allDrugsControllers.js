@@ -17,6 +17,7 @@ const getAllDrugs = asyncHandler(async (req, res) => {
         PharmaceuticalForm: 1,
         ScientificDescriptionCodeRoot: 1,
         wasfaty: 1,
+        list: 1,
       }
     )
     .sort({ TradeName: 1 });
