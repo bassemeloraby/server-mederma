@@ -15,6 +15,9 @@ const allDrugsSchema = mongoose.Schema({
   StrengthUnit: {
     type: String,
   },
+  NumberUnit: {
+    type: Number,
+  },
   wasfaty: {
     type: Boolean,
   },
