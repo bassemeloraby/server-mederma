@@ -16,6 +16,8 @@ const getAllDrugs = asyncHandler(async (req, res) => {
         Strength: 1,
         StrengthUnit: 1,
         NumberUnit: 1,
+        Size: 1,
+        SizeUnit: 1,
         PharmaceuticalForm: 1,
         ScientificDescriptionCodeRoot: 1,
         wasfaty: 1,
@@ -51,6 +53,8 @@ const setDrug = asyncHandler(async (req, res) => {
       Strength: req.body.Strength,
       StrengthUnit: req.body.StrengthUnit,
       NumberUnit: req.body.NumberUnit,
+      Size: req.body.Size,
+      SizeUnit: req.body.SizeUnit,
       wasfaty: req.body.wasfaty,
       list: req.body.list,
     });

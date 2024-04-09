@@ -18,6 +18,12 @@ const allDrugsSchema = mongoose.Schema({
   NumberUnit: {
     type: Number,
   },
+  Size: {
+    type: Number,
+  },
+  SizeUnit: {
+    type: String,
+  },
   wasfaty: {
     type: Boolean,
   },
