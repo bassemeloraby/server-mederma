@@ -1,3 +1,4 @@
+const { set } = require("mongoose");
 const alldrugs = require("../models/allDrugsModel");
 const asyncHandler = require("express-async-handler");
 
@@ -14,7 +15,7 @@ const getAllDrugs = asyncHandler(async (req, res) => {
         PublicPrice: 1,
         Strength: 1,
         StrengthUnit: 1,
-        NumberUnit:1,
+        NumberUnit: 1,
         PharmaceuticalForm: 1,
         ScientificDescriptionCodeRoot: 1,
         wasfaty: 1,
@@ -91,11 +92,27 @@ const updateDrug = asyncHandler(async (req, res) => {
   );
   res.status(200).json(updatedDrug);
 });
+// ---------------------------------------------//
+// @desc    Update many drug
+// @route   patch /api/allDrugs
+// @access  public
+const updateManyDrugs = asyncHandler(async (req, res) => {
+  const filter = { wasfaty: req.body.wasfaty };
+  const update = { $set: { wasfaty: "false" } };
+  res.status(200).json("updateManyDrugs");
+  console.log("updateManyDrugs");
+  console.log(filter);
+  console.log(update);
+  // updateMany(filter, update, options)
+  const updateMany = await alldrugs.updateMany(filter, update)
+  console.log(updateMany)
+});
 
 module.exports = {
   getAllDrugs,
   getOneDrug,
   setDrug,
   deleteDrug,
-  updateDrug
+  updateDrug,
+  updateManyDrugs,
 };
