@@ -37,6 +37,19 @@ const setEquipment = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Delete equipment
+// @route   DELETE /api/allDrugs/:id
+// @access  public
+const deleteEquipment = asyncHandler(async (req, res) => {
+  const equipment = await equipments.findById(req.params.id);
+
+  if (!equipment) {
+    res.status(400).json({ message: "equipment not found" });
+  }
+  await equipment.deleteOne();
+  res.status(200).json({ _id: req.params.id });
+});
+
 // @desc    Update equipment
 // @route   patch /api/equipments/:id
 // @access  public
@@ -59,5 +72,6 @@ const updateEquipment = asyncHandler(async (req, res) => {
 module.exports = {
   getEquipments,
   setEquipment,
+  deleteEquipment,
   updateEquipment,
 };
