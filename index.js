@@ -18,6 +18,7 @@ app.use('/api/allDrugs', require('./routes/allDrugsRoutes'));
 app.use('/api/indications', require('./routes/indicationRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/equipments', require('./routes/equipmentRoutes'));
 
 //test route
 app.get('/', (req, res) => {
