@@ -10,7 +10,7 @@ const getEquipments = asyncHandler(async (req, res) => {
     .find(
       {},
       {
-        MachineUse: 1,
+        MachineName: 1,
         MachineUse: 1,
       }
     )
