@@ -2,6 +2,23 @@ const equipments = require("../models/equipmentModel");
 const asyncHandler = require("express-async-handler");
 
 
+// @desc    Get allDrugs{TradeName,ScientificName,PublicPrice}
+// @route   GET /api/drugs
+// @access  public
+const getEquipments = asyncHandler(async (req, res) => {
+  const allEquipments = await equipments
+    .find(
+      {},
+      {
+        MachineUse: 1,
+        MachineUse: 1,
+      }
+    )
+    .sort({ MachineName: 1 });
+  res.status(200).json(allEquipments);
+});
+
+
 // @desc    Set drug
 // @route   POST /api/drugs
 // @access  public
@@ -21,5 +38,6 @@ const setEquipment = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+  getEquipments,
   setEquipment,
 };
