@@ -10,7 +10,7 @@ const getEquipments = asyncHandler(async (req, res) => {
       {},
       {}
     )
-    .sort({ MachineName: 1 });
+    .sort({ Description: 1 });
   res.status(200).json(allEquipments);
 });
 
@@ -19,14 +19,16 @@ const getEquipments = asyncHandler(async (req, res) => {
 // @access  public
 const setEquipment = asyncHandler(async (req, res) => {
   try {
-    if (!req.body.MachineName || !req.body.MachineUse) {
+    if (!req.body.Description) {
       res
         .status(400)
         .json({ message: "Please add MachineName and  MachineUse field" });
     }
     const equipment = await equipments.create({
-      MachineName: req.body.MachineName,
-      MachineUse: req.body.MachineUse,
+      Description: req.body.Description,
+      company: req.body.company,
+      use: req.body.use,
+      Price: req.body.Price,
     });
     res.status(200).json(equipment);
   } catch (error) {
