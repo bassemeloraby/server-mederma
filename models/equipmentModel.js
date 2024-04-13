@@ -1,13 +1,18 @@
 const mongoose = require("mongoose");
 
 const equipmentSchema = mongoose.Schema({
-  MachineName: {
+  Description: {
     type: String,
     required: [true, "Please add a value"],
   },
-  MachineUse: {
+  company: {
     type: String,
-    required: [true, "Please add a value"],
+  },
+  use: {
+    type: String,
+  },
+  Price: {
+    type: String,
   },
 });
 
