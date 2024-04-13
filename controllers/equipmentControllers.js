@@ -8,10 +8,7 @@ const getEquipments = asyncHandler(async (req, res) => {
   const allEquipments = await equipments
     .find(
       {},
-      {
-        MachineName: 1,
-        MachineUse: 1,
-      }
+      {}
     )
     .sort({ MachineName: 1 });
   res.status(200).json(allEquipments);
