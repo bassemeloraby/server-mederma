@@ -22,7 +22,7 @@ const setEquipment = asyncHandler(async (req, res) => {
     if (!req.body.Description) {
       res
         .status(400)
-        .json({ message: "Please add MachineName and  MachineUse field" });
+        .json({ message: "Please add Description " });
     }
     const equipment = await equipments.create({
       Description: req.body.Description,
