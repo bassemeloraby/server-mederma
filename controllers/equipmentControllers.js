@@ -29,6 +29,8 @@ const setEquipment = asyncHandler(async (req, res) => {
       company: req.body.company,
       use: req.body.use,
       Price: req.body.Price,
+      wasfaty: req.body.wasfaty,
+      list: req.body.list,
     });
     res.status(200).json(equipment);
   } catch (error) {

@@ -14,6 +14,12 @@ const equipmentSchema = mongoose.Schema({
   Price: {
     type: Number,
   },
+  wasfaty: {
+    type: Boolean,
+  },
+  list: {
+    type: Boolean,
+  },
 });
 
 module.exports = mongoose.model("equipment", equipmentSchema);
