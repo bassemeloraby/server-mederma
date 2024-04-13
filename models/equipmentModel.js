@@ -12,7 +12,7 @@ const equipmentSchema = mongoose.Schema({
     type: String,
   },
   Price: {
-    type: String,
+    type: Number,
   },
 });
 
