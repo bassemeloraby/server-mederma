@@ -14,7 +14,6 @@ const productSchema = mongoose.Schema(
     },
     Company: {
       type: String,
-      required: [true, "Please add a value"],
     },
     // company product type to use in links to products
     compProType: {
@@ -42,53 +41,53 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     // -----skin kinds-----//
-    skinSensitivity: {
-      type: String,
+    sensitiveSkin: {
+      type: Boolean,
     },
     normalSkin: {
-      type: String,
+      type: Boolean,
     },
     drySkin: {
-      type: String,
+      type: Boolean,
     },
     oilySkin: {
-      type: String,
+      type: Boolean,
     },
     combinationSkin: {
-      type: String,
+      type: Boolean,
     },
     atopicSkin: {
-      type: String,
+      type: Boolean,
     },
     aknePoreSkin: {
-      type: String,
+      type: Boolean,
     },
     hyperpigmentedSkin: {
-      type: String,
+      type: Boolean,
     },
     flushedSkin: {
-      type: String,
+      type: Boolean,
     },
     irritatedSkin: {
-      type: String,
+      type: Boolean,
     },
     damagedSkin: {
-      type: String,
+      type: Boolean,
     },
     price: {
-      type: String,
+      type: Number,
     },
     picLink: {
       type: String,
     },
     soapFree: {
-      type: String,
+      type: Boolean,
     },
     paraffinFree: {
-      type: String,
+      type: Boolean,
     },
     fregranceFree: {
-      type: String,
+      type: Boolean,
     },
     dose: {
       type: String,
