@@ -12,7 +12,6 @@ const getProducts = asyncHandler(async (req, res) => {
 // @desc    Set product
 // @route   POST /api/products
 // @access  puplic
-
 const setProduct = asyncHandler(async (req, res) => {
   const product = await Product.create({
     Description: req.body.Description,
