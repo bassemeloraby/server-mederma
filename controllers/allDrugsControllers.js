@@ -22,6 +22,7 @@ const getAllDrugs = asyncHandler(async (req, res) => {
         ScientificDescriptionCodeRoot: 1,
         wasfaty: 1,
         list: 1,
+        vitamine: 1,
       }
     )
     .sort({ TradeName: 1 });
@@ -57,6 +58,7 @@ const setDrug = asyncHandler(async (req, res) => {
       SizeUnit: req.body.SizeUnit,
       wasfaty: req.body.wasfaty,
       list: req.body.list,
+      vitamine: req.body.vitamine,
     });
     res.status(200).json(drug);
   } catch (error) {
@@ -108,8 +110,8 @@ const updateManyDrugs = asyncHandler(async (req, res) => {
   console.log(filter);
   console.log(update);
   // updateMany(filter, update, options)
-  const updateMany = await alldrugs.updateMany(filter, update)
-  console.log(updateMany)
+  const updateMany = await alldrugs.updateMany(filter, update);
+  console.log(updateMany);
 });
 
 module.exports = {

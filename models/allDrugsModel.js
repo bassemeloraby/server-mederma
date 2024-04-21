@@ -30,6 +30,9 @@ const allDrugsSchema = mongoose.Schema({
   list: {
     type: Boolean,
   },
+  vitamine: {
+    type: Boolean,
+  },
 });
 
 module.exports = mongoose.model("alldrugs", allDrugsSchema);
