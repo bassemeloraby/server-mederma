@@ -52,6 +52,7 @@ const setDrug = asyncHandler(async (req, res) => {
     const drug = await alldrugs.create({
       TradeName: req.body.TradeName,
       ScientificName: req.body.ScientificName,
+      PublicPrice: req.body.PublicPrice,
       picLink: req.body.picLink,
       Strength: req.body.Strength,
       StrengthUnit: req.body.StrengthUnit,
@@ -72,7 +73,6 @@ const setDrug = asyncHandler(async (req, res) => {
 // @route   DELETE /api/allDrugs/:id
 // @access  public
 const deleteDrug = asyncHandler(async (req, res) => {
-  // const company = await Company.findById(req.params.id)
   const drug = await alldrugs.findById(req.params.id);
 
   if (!drug) {
