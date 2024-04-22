@@ -9,6 +9,9 @@ const allDrugsSchema = mongoose.Schema({
     type: String,
     required: [true, "Please add a value"],
   },
+  picLink: {
+    type: String,
+  },
   Strength: {
     type: String,
   },

@@ -12,6 +12,7 @@ const getAllDrugs = asyncHandler(async (req, res) => {
       {
         TradeName: 1,
         ScientificName: 1,
+        picLink: 1,
         PublicPrice: 1,
         Strength: 1,
         StrengthUnit: 1,
@@ -51,6 +52,7 @@ const setDrug = asyncHandler(async (req, res) => {
     const drug = await alldrugs.create({
       TradeName: req.body.TradeName,
       ScientificName: req.body.ScientificName,
+      picLink: req.body.picLink,
       Strength: req.body.Strength,
       StrengthUnit: req.body.StrengthUnit,
       NumberUnit: req.body.NumberUnit,
