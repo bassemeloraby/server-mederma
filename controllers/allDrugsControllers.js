@@ -21,6 +21,7 @@ const getAllDrugs = asyncHandler(async (req, res) => {
         SizeUnit: 1,
         PharmaceuticalForm: 1,
         ScientificDescriptionCodeRoot: 1,
+        StorageConditions: 1,
         wasfaty: 1,
         list: 1,
         vitamine: 1,
