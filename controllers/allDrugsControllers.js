@@ -47,6 +47,9 @@ const getOneDrug = asyncHandler(async (req, res) => {
 // @access  public
 const setDrug = asyncHandler(async (req, res) => {
   try {
+    if (!req.body.email) {
+      res.status(400).json({ message: "you are not user" }); 
+    }
     if (!req.body.TradeName || !req.body.ScientificName) {
       res.status(400).json({ message: "Please add a Trade Name field" });
     }
