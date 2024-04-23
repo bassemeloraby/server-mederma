@@ -47,7 +47,7 @@ const getOneDrug = asyncHandler(async (req, res) => {
 // @access  public
 const setDrug = asyncHandler(async (req, res) => {
   try {
-    if (!req.body.email) {
+    if (req.body.email !== 'bassem@bassem.com') {
       res.status(400).json({ message: "you are not user" }); 
     }
     if (!req.body.TradeName || !req.body.ScientificName) {
