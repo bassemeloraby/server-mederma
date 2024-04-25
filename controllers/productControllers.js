@@ -13,6 +13,12 @@ const getProducts = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  puplic
 const setProduct = asyncHandler(async (req, res) => {
+  if (req.body.email !== "bassem@bassem.com") {
+    res.status(400).json({ message: "you are not user" });
+  }
+  if (!req.body.Description) {
+    res.status(400).json({ message: "Please add Description " });
+  }
   const product = await Product.create({
     Description: req.body.Description,
     Strength: req.body.Strength,
