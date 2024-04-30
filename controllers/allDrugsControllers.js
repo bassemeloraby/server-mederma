@@ -2,6 +2,32 @@ const { set } = require("mongoose");
 const alldrugs = require("../models/allDrugsModel");
 const asyncHandler = require("express-async-handler");
 
+// @desc    Get filteredDrugs
+// @route   GET /api/drugs/filter
+// @access  public
+const filteredDrugs = asyncHandler(async (req, res) => {
+  let filterDrug = await alldrugs.find({}, {}).sort({ TradeName: 1 });
+  const MarketingCompany = "NOVARTIS";
+  const PharmaceuticalForm = "Tablet";
+  const MarketingCountry = "Ireland";
+
+  if (MarketingCompany) {
+    filterDrug = await alldrugs.find({ MarketingCompany: MarketingCompany });
+  }
+  if (PharmaceuticalForm) {
+    filterDrug = await alldrugs.find({
+      PharmaceuticalForm: PharmaceuticalForm,
+    });
+  }
+  if (MarketingCountry) {
+    filterDrug = await alldrugs.find({
+      MarketingCountry: MarketingCountry,
+    });
+  }
+
+  res.json(filterDrug);
+});
+
 // @desc    Get allDrugs{TradeName,ScientificName,PublicPrice}
 // @route   GET /api/drugs
 // @access  public
@@ -47,8 +73,8 @@ const getOneDrug = asyncHandler(async (req, res) => {
 // @access  public
 const setDrug = asyncHandler(async (req, res) => {
   try {
-    if (req.body.email !== 'bassem@bassem.com') {
-      res.status(400).json({ message: "you are not user" }); 
+    if (req.body.email !== "bassem@bassem.com") {
+      res.status(400).json({ message: "you are not user" });
     }
     if (!req.body.TradeName || !req.body.ScientificName) {
       res.status(400).json({ message: "Please add a Trade Name field" });
@@ -127,4 +153,5 @@ module.exports = {
   deleteDrug,
   updateDrug,
   updateManyDrugs,
+  filteredDrugs,
 };

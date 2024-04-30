@@ -6,10 +6,12 @@ const {
   setDrug,
   deleteDrug,
   updateDrug,
-  updateManyDrugs
+  updateManyDrugs,
+  filteredDrugs
 } = require("../controllers/allDrugsControllers");
 
 router.route("/").get(getAllDrugs);
+router.route("/filter").get(filteredDrugs);
 router.route("/").post(setDrug);
 router.route("/").patch(updateManyDrugs);
 router.route("/:id").get(getOneDrug);
