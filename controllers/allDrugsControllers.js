@@ -7,12 +7,14 @@ const asyncHandler = require("express-async-handler");
 // @access  public
 const filteredDrugs = asyncHandler(async (req, res) => {
   let filterDrug = await alldrugs.find({}, {}).sort({ TradeName: 1 });
-  const MarketingCompany = "NOVARTIS";
-  const PharmaceuticalForm = "Tablet";
-  const MarketingCountry = "Ireland";
+  // const MarketingCompany = "NOVARTIS";
+  // const PharmaceuticalForm = "Tablet";
+  // const MarketingCountry = "Ireland";
 
-  if (MarketingCompany) {
-    filterDrug = await alldrugs.find({ MarketingCompany: MarketingCompany });
+  if (req.body.MarketingCompany) {
+    filterDrug = await alldrugs.find({
+      MarketingCompany: req.body.MarketingCompany,
+    });
   }
   if (PharmaceuticalForm) {
     filterDrug = await alldrugs.find({
