@@ -9,7 +9,9 @@ const filteredDrugs = asyncHandler(async (req, res) => {
   let filterDrug = await alldrugs.find({}, {}).sort({ TradeName: 1 });
   // const MarketingCompany = "NOVARTIS";
   // const PharmaceuticalForm = "Tablet";
+  const PharmaceuticalForm = "";
   // const MarketingCountry = "Ireland";
+  const MarketingCountry = "";
 
   if (req.body.MarketingCompany) {
     filterDrug = await alldrugs.find({
