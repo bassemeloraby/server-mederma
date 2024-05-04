@@ -2,62 +2,59 @@ const { set } = require("mongoose");
 const alldrugs = require("../models/allDrugsModel");
 const asyncHandler = require("express-async-handler");
 
-// @desc    Get filteredDrugs
-// @route   GET /api/drugs/filter
-// @access  public
-const filteredDrugs = asyncHandler(async (req, res) => {
-  let filterDrug = await alldrugs.find({}, {}).sort({ TradeName: 1 });
-  // const MarketingCompany = "NOVARTIS";
-  // const PharmaceuticalForm = "Tablet";
-  const PharmaceuticalForm = "";
-  // const MarketingCountry = "Ireland";
-  const MarketingCountry = "";
-
-  if (req.body.MarketingCompany) {
-    filterDrug = await alldrugs.find({
-      MarketingCompany: req.body.MarketingCompany,
-    });
-  }
-  if (PharmaceuticalForm) {
-    filterDrug = await alldrugs.find({
-      PharmaceuticalForm: PharmaceuticalForm,
-    });
-  }
-  if (MarketingCountry) {
-    filterDrug = await alldrugs.find({
-      MarketingCountry: MarketingCountry,
-    });
-  }
-
-  res.json(filterDrug);
-});
-
 // @desc    Get allDrugs{TradeName,ScientificName,PublicPrice}
 // @route   GET /api/drugs
 // @access  public
 const getAllDrugs = asyncHandler(async (req, res) => {
-  const allDrug = await alldrugs
-    .find(
-      {},
-      {
-        TradeName: 1,
-        ScientificName: 1,
-        picLink: 1,
-        PublicPrice: 1,
-        Strength: 1,
-        StrengthUnit: 1,
-        NumberUnit: 1,
-        Size: 1,
-        SizeUnit: 1,
-        PharmaceuticalForm: 1,
-        ScientificDescriptionCodeRoot: 1,
-        StorageConditions: 1,
-        wasfaty: 1,
-        list: 1,
-        vitamine: 1,
-      }
-    )
-    .sort({ TradeName: 1 });
+  let allDrug
+  if (req.query.wasfaty) {
+     allDrug = await alldrugs
+      .find(
+        { wasfaty: req.query.wasfaty },
+        {
+          TradeName: 1,
+          ScientificName: 1,
+          picLink: 1,
+          PublicPrice: 1,
+          Strength: 1,
+          StrengthUnit: 1,
+          NumberUnit: 1,
+          Size: 1,
+          SizeUnit: 1,
+          PharmaceuticalForm: 1,
+          ScientificDescriptionCodeRoot: 1,
+          StorageConditions: 1,
+          wasfaty: 1,
+          list: 1,
+          vitamine: 1,
+        }
+      )
+      .sort({ TradeName: 1 });
+  } else {
+    allDrug = await alldrugs
+      .find(
+        {},
+        {
+          TradeName: 1,
+          ScientificName: 1,
+          picLink: 1,
+          PublicPrice: 1,
+          Strength: 1,
+          StrengthUnit: 1,
+          NumberUnit: 1,
+          Size: 1,
+          SizeUnit: 1,
+          PharmaceuticalForm: 1,
+          ScientificDescriptionCodeRoot: 1,
+          StorageConditions: 1,
+          wasfaty: 1,
+          list: 1,
+          vitamine: 1,
+        }
+      )
+      .sort({ TradeName: 1 });
+  }
+
   res.status(200).json(allDrug);
 });
 
@@ -157,5 +154,4 @@ module.exports = {
   deleteDrug,
   updateDrug,
   updateManyDrugs,
-  filteredDrugs,
 };
