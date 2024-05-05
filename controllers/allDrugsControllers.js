@@ -7,10 +7,10 @@ const asyncHandler = require("express-async-handler");
 // @access  public
 const getAllDrugs = asyncHandler(async (req, res) => {
   let allDrug;
-  if (req.body.ScientificName) {
+  if (req.query.ScientificName) {
     allDrug = await alldrugs
       .find(
-        { ScientificName: req.body.ScientificName },
+        { ScientificName: req.query.ScientificName },
         {
           TradeName: 1,
           ScientificName: 1,
