@@ -6,9 +6,33 @@ const asyncHandler = require("express-async-handler");
 // @route   GET /api/drugs
 // @access  public
 const getAllDrugs = asyncHandler(async (req, res) => {
-  let allDrug
+  let allDrug;
+  if (req.body.ScientificName) {
+    allDrug = await alldrugs
+      .find(
+        { ScientificName: req.body.ScientificName },
+        {
+          TradeName: 1,
+          ScientificName: 1,
+          picLink: 1,
+          PublicPrice: 1,
+          Strength: 1,
+          StrengthUnit: 1,
+          NumberUnit: 1,
+          Size: 1,
+          SizeUnit: 1,
+          PharmaceuticalForm: 1,
+          ScientificDescriptionCodeRoot: 1,
+          StorageConditions: 1,
+          wasfaty: 1,
+          list: 1,
+          vitamine: 1,
+        }
+      )
+      .sort({ TradeName: 1 });
+  }
   if (req.query.wasfaty) {
-     allDrug = await alldrugs
+    allDrug = await alldrugs
       .find(
         { wasfaty: req.query.wasfaty },
         {
