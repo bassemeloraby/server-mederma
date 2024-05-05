@@ -7,10 +7,10 @@ const asyncHandler = require("express-async-handler");
 // @access  public
 const getAllDrugs = asyncHandler(async (req, res) => {
   let allDrug;
-  if (req.params.ScientificName) {
+  if (req.body.ScientificName) {
     allDrug = await alldrugs
       .find(
-        { ScientificName: req.params.ScientificName },
+        { ScientificName: req.body.ScientificName },
         {
           TradeName: 1,
           ScientificName: 1,
@@ -31,30 +31,31 @@ const getAllDrugs = asyncHandler(async (req, res) => {
       )
       .sort({ TradeName: 1 });
   }
-  if (req.query.wasfaty) {
-    allDrug = await alldrugs
-      .find(
-        { wasfaty: req.query.wasfaty },
-        {
-          TradeName: 1,
-          ScientificName: 1,
-          picLink: 1,
-          PublicPrice: 1,
-          Strength: 1,
-          StrengthUnit: 1,
-          NumberUnit: 1,
-          Size: 1,
-          SizeUnit: 1,
-          PharmaceuticalForm: 1,
-          ScientificDescriptionCodeRoot: 1,
-          StorageConditions: 1,
-          wasfaty: 1,
-          list: 1,
-          vitamine: 1,
-        }
-      )
-      .sort({ TradeName: 1 });
-  } else {
+  // if (req.query.wasfaty) {
+  //   allDrug = await alldrugs
+  //     .find(
+  //       { wasfaty: req.query.wasfaty },
+  //       {
+  //         TradeName: 1,
+  //         ScientificName: 1,
+  //         picLink: 1,
+  //         PublicPrice: 1,
+  //         Strength: 1,
+  //         StrengthUnit: 1,
+  //         NumberUnit: 1,
+  //         Size: 1,
+  //         SizeUnit: 1,
+  //         PharmaceuticalForm: 1,
+  //         ScientificDescriptionCodeRoot: 1,
+  //         StorageConditions: 1,
+  //         wasfaty: 1,
+  //         list: 1,
+  //         vitamine: 1,
+  //       }
+  //     )
+  //     .sort({ TradeName: 1 });
+  // } 
+  else {
     allDrug = await alldrugs
       .find(
         {},
