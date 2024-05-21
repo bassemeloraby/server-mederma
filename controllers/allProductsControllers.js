@@ -3,8 +3,10 @@ const allProducts = require("../models/allProductsModel");
 const asyncHandler = require("express-async-handler");
 
 //1
+// @desc    Set product
+// @route   POST /api/allProducts
+// @access  public
 const setProduct = asyncHandler(async (req, res) => {
- 
   if (!req.body.pharmacyCategory) {
     res.status(400).json({ message: "Please add a pharmacyCategory field" });
   }
@@ -32,9 +34,19 @@ const setProduct = asyncHandler(async (req, res) => {
   });
   res.status(200).json(product);
 });
+
 //2
 const getProducts = asyncHandler(async (req, res) => {
-  res.json("get all products done");
+  const products = await allProducts
+    .find({}, { 
+      pharmacyCategory: 1,
+      description: 1,
+      scientificName: 1,
+      publicPrice: 1,
+      picLink: 1,
+     })
+    .sort({ description: 1 });
+  res.status(200).json(products);
 });
 //3
 const getOneProduct = asyncHandler(async (req, res) => {
