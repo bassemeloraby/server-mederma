@@ -36,25 +36,51 @@ const setProduct = asyncHandler(async (req, res) => {
 });
 
 //2
+// @desc    Get getProducts
+// @route   GET /api/products
+// @access  public
 const getProducts = asyncHandler(async (req, res) => {
   const products = await allProducts
-    .find({}, { 
-      pharmacyCategory: 1,
-      description: 1,
-      scientificName: 1,
-      publicPrice: 1,
-      picLink: 1,
-     })
+    .find(
+      {},
+      {
+        pharmacyCategory: 1,
+        description: 1,
+        scientificName: 1,
+        publicPrice: 1,
+        picLink: 1,
+      }
+    )
     .sort({ description: 1 });
   res.status(200).json(products);
 });
+
 //3
+// @desc    Get one product
+// @route   GET /api/allProducts/:id
+// @access  public
 const getOneProduct = asyncHandler(async (req, res) => {
-  res.json("get one product done");
+  // const product = await allProducts.find({ _id: req.params.id });
+  const product = await allProducts.findById(req.params.id);
+  if (!product) {
+    res.status(400).json({ message: "not found" });
+  } else {
+    res.status(200).json(product);
+  }
 });
+
 //4
+// @desc    Delete product
+// @route   DELETE /api/allProducts/:id
+// @access  public
 const deleteProduct = asyncHandler(async (req, res) => {
-  res.json("delete one product done");
+  const product = await allProducts.findById(req.params.id);
+  if (!product) {
+    res.status(400).json({ message: "not found" });
+  } else {
+    await product.deleteOne();
+    res.status(200).json({ message: "product deleted" });
+  }
 });
 //5
 const updateProduct = asyncHandler(async (req, res) => {
