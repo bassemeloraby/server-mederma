@@ -92,9 +92,9 @@ const deleteDrug = asyncHandler(async (req, res) => {
 // @route   PUT /api/allDrugs/:id
 // @access  public
 const updateDrug = asyncHandler(async (req, res) => {
-  const product = await alldrugs.findById(req.params.id);
-  if (!product) {
-    res.status(400).json({ message: "product not found" });
+  const drug = await alldrugs.findById(req.params.id);
+  if (!drug) {
+    res.status(400).json({ message: "drug not found" });
   }
 
   const updatedDrug = await alldrugs.findByIdAndUpdate(
