@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const allProductsSchema = mongoose.Schema({
-  pharmacyCategory: {
+  productType: {
     type: String,
     required: [true, "Please add a value"],
   },
