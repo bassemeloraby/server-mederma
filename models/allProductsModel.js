@@ -76,56 +76,56 @@ const allProductsSchema = mongoose.Schema(
     usedArea2: {
       type: String,
     },
-   // -----skin kinds-----//
-   sensitiveSkin: {
-    type: Boolean,
-  },
-  normalSkin: {
-    type: Boolean,
-  },
-  drySkin: {
-    type: Boolean,
-  },
-  oilySkin: {
-    type: Boolean,
-  },
-  combinationSkin: {
-    type: Boolean,
-  },
-  atopicSkin: {
-    type: Boolean,
-  },
-  aknePoreSkin: {
-    type: Boolean,
-  },
-  hyperpigmentedSkin: {
-    type: Boolean,
-  },
-  flushedSkin: {
-    type: Boolean,
-  },
-  irritatedSkin: {
-    type: Boolean,
-  },
-  damagedSkin: {
-    type: Boolean,
-  },
-  soapFree: {
-    type: Boolean,
-  },
-  paraffinFree: {
-    type: Boolean,
-  },
-  fregranceFree: {
-    type: Boolean,
-  },
-   // international Barcode
-   intBarcode: {
-    type: String,
-  },
-  intBarcode1: {
-    type: String,
-  },
+    // -----skin kinds-----//
+    sensitiveSkin: {
+      type: Boolean,
+    },
+    normalSkin: {
+      type: Boolean,
+    },
+    drySkin: {
+      type: Boolean,
+    },
+    oilySkin: {
+      type: Boolean,
+    },
+    combinationSkin: {
+      type: Boolean,
+    },
+    atopicSkin: {
+      type: Boolean,
+    },
+    aknePoreSkin: {
+      type: Boolean,
+    },
+    hyperpigmentedSkin: {
+      type: Boolean,
+    },
+    flushedSkin: {
+      type: Boolean,
+    },
+    irritatedSkin: {
+      type: Boolean,
+    },
+    damagedSkin: {
+      type: Boolean,
+    },
+    soapFree: {
+      type: Boolean,
+    },
+    paraffinFree: {
+      type: Boolean,
+    },
+    fregranceFree: {
+      type: Boolean,
+    },
+    // international Barcode
+    intBarcode: {
+      type: String,
+    },
+    intBarcode1: {
+      type: String,
+    },
   },
   {
     timestamps: true,
