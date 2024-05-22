@@ -56,6 +56,7 @@ const getProducts = asyncHandler(async (req, res) => {
       )
       .sort({ description: 1 });
     res.status(200).json(products);
+    console.log('wasfaty',products.length)
   } else {
     const products = await allProducts
       .find(
@@ -70,6 +71,7 @@ const getProducts = asyncHandler(async (req, res) => {
       )
       .sort({ description: 1 });
     res.status(200).json(products);
+    console.log('all',products.length)
   }
 });
 
