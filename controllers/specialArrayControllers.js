@@ -20,16 +20,16 @@ const setSpecialArray = asyncHandler(async (req, res) => {
     {}
   );
   if (listDescription) {
-    res.status(400).json("there is a list with same description");
-  }
-  if (!req.body.content) {
+    res.status(200).json("there is a list with same description");
+  } else if (!req.body.content) {
     res.status(200).json("please provide a content");
+  } else {
+    const specialAr = await specialArray.create({
+      Description: req.body.Description,
+      content: req.body.content,
+    });
+    res.status(200).json(specialAr);
   }
-  const specialAr = await specialArray.create({
-    Description: req.body.Description,
-    content: req.body.content,
-  });
-  res.status(200).json(specialAr);
 });
 
 // @desc    Delete equipment
