@@ -25,9 +25,9 @@ const setSpecialArray = asyncHandler(async (req, res) => {
   console.log(listDescription);
   console.log(listDescription.length);
   if (listDescription.length > 0) {
-    res.status(200).json("there is a list with same description");
+    res.status(400).json("there is a list with same description");
   } else if (!req.body.content) {
-    res.status(200).json("please provide a content");
+    res.status(400).json("please provide a content");
   } else {
     const specialAr = await specialArray.create({
       Description: req.body.Description,
