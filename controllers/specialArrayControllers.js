@@ -9,6 +9,18 @@ const getSpecialArrays = asyncHandler(async (req, res) => {
   res.status(200).json(specialAr);
 });
 
+// @desc    Get one list
+// @route   GET /api/specialArrays/:id
+// @access  public
+const getOneSpecialArray = asyncHandler(async (req, res) => {
+  const list = await specialArray.findById(req.params.id);
+  if (!list) {
+    res.status(400).json({ message: "not found" });
+  } else {
+    res.status(200).json(list);
+  }
+});
+
 // @desc    Set drug
 // @route   POST /api/drugs
 // @access  public
@@ -52,6 +64,7 @@ const deleteSpecialArray = asyncHandler(async (req, res) => {
 
 module.exports = {
   getSpecialArrays,
+  getOneSpecialArray,
   setSpecialArray,
   deleteSpecialArray,
 };
