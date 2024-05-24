@@ -13,12 +13,15 @@ const getSpecialArrays = asyncHandler(async (req, res) => {
 // @route   POST /api/drugs
 // @access  public
 const setSpecialArray = asyncHandler(async (req, res) => {
-  // const listDescription = await specialArray.find({
-  //   Description: req.body.Description,
-  // });
-  // if (listDescription) {
-  //   res.status(400).json("there is a list with same description");
-  // }
+  const listDescription = await specialArray.find(
+    {
+      Description: req.body.Description,
+    },
+    {}
+  );
+  if (listDescription) {
+    res.status(400).json("there is a list with same description");
+  }
   if (!req.body.content) {
     res.status(200).json("please provide a content");
   }
