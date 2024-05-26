@@ -52,6 +52,9 @@ const getProducts = asyncHandler(async (req, res) => {
           scientificName: 1,
           publicPrice: 1,
           picLink: 1,
+          strength:1,
+          strengthUnit:1,
+          parts:1,
         }
       )
       .sort({ description: 1 });
@@ -67,6 +70,9 @@ const getProducts = asyncHandler(async (req, res) => {
           scientificName: 1,
           publicPrice: 1,
           picLink: 1,
+          strength:1,
+          strengthUnit:1,
+          parts:1,
         }
       )
       .sort({ description: 1 });
