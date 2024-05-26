@@ -21,19 +21,14 @@ const getOneSpecialArray = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Set drug
-// @route   POST /api/drugs
+// @desc    Set list
+// @route   POST /api/specialArrays
 // @access  public
 const setSpecialArray = asyncHandler(async (req, res) => {
   console.log(req.body.Description);
   const d1 = req.body.Description;
   console.log(d1);
   const listDescription = await specialArray.find({ Description: d1 });
-  // const listDescription = await specialArray.find(
-  //   {
-  //     Description: req.body.Description,
-  //   }
-  // );
   console.log(listDescription);
   console.log(listDescription.length);
   if (listDescription.length > 0) {
@@ -62,9 +57,29 @@ const deleteSpecialArray = asyncHandler(async (req, res) => {
   res.status(200).json({ _id: req.params.id });
 });
 
+// @desc    Update list
+// @route   patch /api/allDrugs/:id
+// @access  public
+const updateSpecialArray = asyncHandler(async (req, res) => {
+  const specialAr = await specialArray.findById(req.params.id);
+  if (!specialAr) {
+    res.status(400).json({ message: "list not found" });
+  }
+
+  const updatedSpecialArray = await specialArray.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
+  res.status(200).json(updatedSpecialArray);
+});
+
 module.exports = {
   getSpecialArrays,
   getOneSpecialArray,
   setSpecialArray,
   deleteSpecialArray,
+  updateSpecialArray,
 };
