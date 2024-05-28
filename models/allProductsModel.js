@@ -57,9 +57,7 @@ const allProductsSchema = mongoose.Schema(
       type: Boolean,
     },
     //beauty
-    drySkin: {
-      type: Boolean,
-    },
+   
     companyCategory1: {
       type: String,
     },
@@ -76,6 +74,9 @@ const allProductsSchema = mongoose.Schema(
       type: String,
     },
     // -----skin kinds-----//
+    drySkin: {
+      type: Boolean,
+    },
     sensitiveSkin: {
       type: Boolean,
     },
