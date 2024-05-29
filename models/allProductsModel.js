@@ -83,9 +83,6 @@ const allProductsSchema = mongoose.Schema(
     normalSkin: {
       type: Boolean,
     },
-    drySkin: {
-      type: Boolean,
-    },
     oilySkin: {
       type: Boolean,
     },
