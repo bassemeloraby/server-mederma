@@ -31,6 +31,17 @@ const setProduct = asyncHandler(async (req, res) => {
     wasfaty: req.body.wasfaty,
     list: req.body.list,
     vitamine: req.body.vitamine,
+    drySkin: req.body.drySkin,
+    sensitiveSkin: req.body.sensitiveSkin,
+    normalSkin: req.body.normalSkin,
+    oilySkin: req.body.oilySkin,
+    combinationSkin: req.body.combinationSkin,
+    atopicSkin: req.body.atopicSkin,
+    aknePoreSkin: req.body.aknePoreSkin,
+    hyperpigmentedSkin: req.body.hyperpigmented,
+    flushedSkin: req.body.flushed,
+    irritatedSkin: req.body.irritated,
+    damagedSkin: req.body.damaged,
   });
   res.status(200).json(product);
 });
