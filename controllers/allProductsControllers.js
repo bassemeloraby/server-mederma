@@ -51,8 +51,21 @@ const setProduct = asyncHandler(async (req, res) => {
 // @route   GET /api/products
 // @access  public
 const getProducts = asyncHandler(async (req, res) => {
-  if (req.query.description) {
-    res.status(200).json("filter");
+  if (req.query.scientificName) {
+    const products = await allProducts.find(
+      { scientificName: req.query.scientificName },
+      {
+        productType: 1,
+        description: 1,
+        scientificName: 1,
+        publicPrice: 1,
+        picLink: 1,
+        strength: 1,
+        strengthUnit: 1,
+        parts: 1,
+      }
+    );
+    console.log("scientificName", products.length);
   } else if (req.query.wasfaty === "true") {
     const products = await allProducts
       .find(
@@ -63,14 +76,14 @@ const getProducts = asyncHandler(async (req, res) => {
           scientificName: 1,
           publicPrice: 1,
           picLink: 1,
-          strength:1,
-          strengthUnit:1,
-          parts:1,
+          strength: 1,
+          strengthUnit: 1,
+          parts: 1,
         }
       )
       .sort({ description: 1 });
     res.status(200).json(products);
-    console.log('wasfaty',products.length)
+    console.log("wasfaty", products.length);
   } else {
     const products = await allProducts
       .find(
@@ -81,14 +94,14 @@ const getProducts = asyncHandler(async (req, res) => {
           scientificName: 1,
           publicPrice: 1,
           picLink: 1,
-          strength:1,
-          strengthUnit:1,
-          parts:1,
+          strength: 1,
+          strengthUnit: 1,
+          parts: 1,
         }
       )
       .sort({ description: 1 });
     res.status(200).json(products);
-    console.log('all',products.length)
+    console.log("all", products.length);
   }
 });
 
