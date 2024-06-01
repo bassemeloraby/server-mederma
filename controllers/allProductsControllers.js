@@ -65,6 +65,7 @@ const getProducts = asyncHandler(async (req, res) => {
         parts: 1,
       }
     );
+    res.status(200).json(products);
     console.log("scientificName", products.length);
   } else if (req.query.wasfaty === "true") {
     const products = await allProducts
