@@ -148,6 +148,7 @@ const getProducts = asyncHandler(async (req, res) => {
           strength: 1,
           strengthUnit: 1,
           parts: 1,
+          marketingCompany: 1,
         }
       )
       .sort({ description: 1 });
