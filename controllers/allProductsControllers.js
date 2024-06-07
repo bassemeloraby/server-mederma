@@ -53,6 +53,7 @@ const setProduct = asyncHandler(async (req, res) => {
 const getProducts = asyncHandler(async (req, res) => {
   if (
     req.query.description ||
+    req.query.productType ||
     req.query.scientificName ||
     req.query.marketingCompany ||
     req.query.wasfaty === "true" ||
