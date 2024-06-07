@@ -112,7 +112,8 @@ const getProducts = asyncHandler(async (req, res) => {
     req.query.description ||
     req.query.scientificName ||
     req.query.marketingCompany ||
-    req.query.wasfaty === "true"
+    req.query.wasfaty === "true"||
+    req.query.sensitiveSkin === "true"
   ) {
     let products = await allProducts.find({}, {}).sort({ description: 1 });
     if (req.query.description) {
@@ -132,6 +133,9 @@ const getProducts = asyncHandler(async (req, res) => {
     }
     if (req.query.wasfaty === "true") {
       products = products.filter((f) => f.wasfaty === true);
+    }
+    if (req.query.sensitiveSkin === "true") {
+      products = products.filter((f) => f.sensitiveSkin === true);
     }
     res.status(200).json(products);
     console.log("filter", products.length);
