@@ -68,6 +68,11 @@ const getProducts = asyncHandler(async (req, res) => {
         (f) => f.description === req.query.description
       );
     }
+    if (req.query.productType) {
+      products = products.filter(
+        (f) => f.productType === req.query.productType
+      );
+    }
     if (req.query.scientificName) {
       products = products.filter(
         (f) => f.scientificName === req.query.scientificName
