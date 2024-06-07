@@ -50,70 +50,17 @@ const setProduct = asyncHandler(async (req, res) => {
 // @desc    Get getProducts
 // @route   GET /api/products
 // @access  public
-// const getProducts = asyncHandler(async (req, res) => {
-//   if (req.query.scientificName) {
-//     const products = await allProducts.find(
-//       { scientificName: req.query.scientificName },
-//       {
-//         productType: 1,
-//         description: 1,
-//         scientificName: 1,
-//         publicPrice: 1,
-//         picLink: 1,
-//         strength: 1,
-//         strengthUnit: 1,
-//         parts: 1,
-//       }
-//     );
-//     res.status(200).json(products);
-//     console.log("scientificName", products.length);
-//   } else if (req.query.wasfaty === "true") {
-//     const products = await allProducts
-//       .find(
-//         { wasfaty: req.query.wasfaty },
-//         {
-//           productType: 1,
-//           description: 1,
-//           scientificName: 1,
-//           publicPrice: 1,
-//           picLink: 1,
-//           strength: 1,
-//           strengthUnit: 1,
-//           parts: 1,
-//         }
-//       )
-//       .sort({ description: 1 });
-//     res.status(200).json(products);
-//     console.log("wasfaty", products.length);
-//   } else {
-//     const products = await allProducts
-//       .find(
-//         {},
-//         {
-//           productType: 1,
-//           description: 1,
-//           scientificName: 1,
-//           publicPrice: 1,
-//           picLink: 1,
-//           strength: 1,
-//           strengthUnit: 1,
-//           parts: 1,
-//         }
-//       )
-//       .sort({ description: 1 });
-//     res.status(200).json(products);
-//     console.log("all", products.length);
-//   }
-// });
-
-//-------------test-----------//
 const getProducts = asyncHandler(async (req, res) => {
   if (
     req.query.description ||
     req.query.scientificName ||
     req.query.marketingCompany ||
-    req.query.wasfaty === "true"||
-    req.query.sensitiveSkin === "true"
+    req.query.wasfaty === "true" ||
+    req.query.drySkin === "true" ||
+    req.query.sensitiveSkin === "true" ||
+    req.query.normalSkin === "true" ||
+    req.query.oilySkin === "true" ||
+    req.query.combinationSkin === "true"
   ) {
     let products = await allProducts.find({}, {}).sort({ description: 1 });
     if (req.query.description) {
@@ -134,8 +81,20 @@ const getProducts = asyncHandler(async (req, res) => {
     if (req.query.wasfaty === "true") {
       products = products.filter((f) => f.wasfaty === true);
     }
+    if (req.query.drySkin === "true") {
+      products = products.filter((f) => f.drySkin === true);
+    }
     if (req.query.sensitiveSkin === "true") {
       products = products.filter((f) => f.sensitiveSkin === true);
+    }
+    if (req.query.normalSkin === "true") {
+      products = products.filter((f) => f.normalSkin === true);
+    }
+    if (req.query.oilySkin === "true") {
+      products = products.filter((f) => f.oilySkin === true);
+    }
+    if (req.query.combinationSkin === "true") {
+      products = products.filter((f) => f.combinationSkin === true);
     }
     res.status(200).json(products);
     console.log("filter", products.length);
