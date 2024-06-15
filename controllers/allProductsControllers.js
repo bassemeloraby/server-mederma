@@ -61,7 +61,16 @@ const getProducts = asyncHandler(async (req, res) => {
     req.query.sensitiveSkin === "true" ||
     req.query.normalSkin === "true" ||
     req.query.oilySkin === "true" ||
-    req.query.combinationSkin === "true"
+    req.query.combinationSkin === "true"||
+    req.query.atopicSkin === "true"||
+    req.query.aknePoreSkin === "true"||
+    req.query.hyperpigmentedSkin === "true"||
+    req.query.flushedSkin === "true"||
+    req.query.irritatedSkin === "true"||
+    req.query.damagedSkin === "true"||
+    req.query.soapFree === "true"||
+    req.query.paraffinFree === "true"||
+    req.query.fregranceFree === "true"
   ) {
     let products = await allProducts.find({}, {}).sort({ description: 1 });
     if (req.query.description) {
@@ -101,6 +110,33 @@ const getProducts = asyncHandler(async (req, res) => {
     }
     if (req.query.combinationSkin === "true") {
       products = products.filter((f) => f.combinationSkin === true);
+    }
+    if (req.query.atopicSkin === "true") {
+      products = products.filter((f) => f.atopicSkin === true);
+    }
+    if (req.query.aknePoreSkin === "true") {
+      products = products.filter((f) => f.aknePoreSkin === true);
+    }
+    if (req.query.hyperpigmentedSkin === "true") {
+      products = products.filter((f) => f.hyperpigmentedSkin === true);
+    }
+    if (req.query.flushedSkin === "true") {
+      products = products.filter((f) => f.flushedSkin === true);
+    }
+    if (req.query.irritatedSkin === "true") {
+      products = products.filter((f) => f.irritatedSkin === true);
+    }
+    if (req.query.damagedSkin === "true") {
+      products = products.filter((f) => f.damagedSkin === true);
+    }
+    if (req.query.soapFree === "true") {
+      products = products.filter((f) => f.soapFree === true);
+    }
+    if (req.query.paraffinFree === "true") {
+      products = products.filter((f) => f.paraffinFree === true);
+    }
+    if (req.query.fregranceFree === "true") {
+      products = products.filter((f) => f.fregranceFree === true);
     }
     res.status(200).json(products);
     console.log("filter", products.length);
