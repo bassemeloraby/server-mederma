@@ -56,6 +56,8 @@ const getProducts = asyncHandler(async (req, res) => {
     req.query.productType ||
     req.query.scientificName ||
     req.query.marketingCompany ||
+    req.query.use ||
+    req.query.use1 ||
     req.query.wasfaty === "true" ||
     req.query.drySkin === "true" ||
     req.query.sensitiveSkin === "true" ||
@@ -91,6 +93,16 @@ const getProducts = asyncHandler(async (req, res) => {
     if (req.query.marketingCompany) {
       products = products.filter(
         (f) => f.marketingCompany === req.query.marketingCompany
+      );
+    }
+    if (req.query.use) {
+      products = products.filter(
+        (f) => f.use === req.query.use
+      );
+    }
+    if (req.query.use1) {
+      products = products.filter(
+        (f) => f.use1 === req.query.use1
       );
     }
     if (req.query.wasfaty === "true") {
