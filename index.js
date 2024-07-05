@@ -17,7 +17,6 @@ app.use("/api/allDrugs", require("./routes/allDrugsRoutes"));
 app.use("/api/indications", require("./routes/indicationRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/products", require("./routes/productRoutes"));
-app.use("/api/equipments", require("./routes/equipmentRoutes"));
 app.use("/api/specialArrays", require("./routes/SpecialArrayRoutes"));
 app.use("/api/allProducts", require("./routes/allProductsRoutes"));
 
