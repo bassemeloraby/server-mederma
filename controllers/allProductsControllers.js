@@ -63,15 +63,15 @@ const getProducts = asyncHandler(async (req, res) => {
     req.query.sensitiveSkin === "true" ||
     req.query.normalSkin === "true" ||
     req.query.oilySkin === "true" ||
-    req.query.combinationSkin === "true"||
-    req.query.atopicSkin === "true"||
-    req.query.aknePoreSkin === "true"||
-    req.query.hyperpigmentedSkin === "true"||
-    req.query.flushedSkin === "true"||
-    req.query.irritatedSkin === "true"||
-    req.query.damagedSkin === "true"||
-    req.query.soapFree === "true"||
-    req.query.paraffinFree === "true"||
+    req.query.combinationSkin === "true" ||
+    req.query.atopicSkin === "true" ||
+    req.query.aknePoreSkin === "true" ||
+    req.query.hyperpigmentedSkin === "true" ||
+    req.query.flushedSkin === "true" ||
+    req.query.irritatedSkin === "true" ||
+    req.query.damagedSkin === "true" ||
+    req.query.soapFree === "true" ||
+    req.query.paraffinFree === "true" ||
     req.query.fregranceFree === "true"
   ) {
     let products = await allProducts.find({}, {}).sort({ description: 1 });
@@ -96,14 +96,10 @@ const getProducts = asyncHandler(async (req, res) => {
       );
     }
     if (req.query.use) {
-      products = products.filter(
-        (f) => f.use === req.query.use
-      );
+      products = products.filter((f) => f.use === req.query.use);
     }
     if (req.query.use1) {
-      products = products.filter(
-        (f) => f.use1 === req.query.use1
-      );
+      products = products.filter((f) => f.use1 === req.query.use1);
     }
     if (req.query.wasfaty === "true") {
       products = products.filter((f) => f.wasfaty === true);
@@ -227,6 +223,11 @@ const filterProducts = asyncHandler(async (req, res) => {
   res.status(200).json("filter done");
 });
 
+//7 uploadImage
+const uploadImage = asyncHandler(async (req, res) => {
+  res.status(200).json("upload Image");
+});
+
 module.exports = {
   setProduct,
   getProducts,
@@ -234,4 +235,5 @@ module.exports = {
   deleteProduct,
   updateProduct,
   filterProducts,
+  uploadImage,
 };
