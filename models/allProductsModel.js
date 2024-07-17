@@ -57,7 +57,7 @@ const allProductsSchema = mongoose.Schema(
       type: Boolean,
     },
     //beauty
-   
+
     companyCategory1: {
       type: String,
     },
@@ -122,6 +122,10 @@ const allProductsSchema = mongoose.Schema(
     },
     intBarcode1: {
       type: String,
+    },
+    img: {
+      data: Buffer,
+      contentType: String,
     },
   },
   {

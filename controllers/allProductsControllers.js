@@ -1,12 +1,19 @@
 const allProducts = require("../models/allProductsModel");
 
 const asyncHandler = require("express-async-handler");
+// const multer = require("multer");
+// const upload = multer({ dest: "../uploads" });
+var fs = require("fs");
+var path = require("path");
+// import axios from "axios";
 
 //1
 // @desc    Set product
 // @route   POST /api/allProducts
 // @access  public
 const setProduct = asyncHandler(async (req, res) => {
+  console.log(req.file);
+
   if (!req.body.productType) {
     res.status(400).json({ message: "Please add a productType field" });
   }
@@ -18,6 +25,12 @@ const setProduct = asyncHandler(async (req, res) => {
     description: req.body.description,
     scientificName: req.body.scientificName,
     marketingCompany: req.body.marketingCompany,
+    img: {
+      data: fs.readFileSync(
+        path.join(__dirname, "../uploads", req.file.filename)
+      ),
+      contentType: "image/png",
+    },
     picLink: req.body.picLink,
     publicPrice: req.body.publicPrice,
     //equipmen
@@ -43,6 +56,8 @@ const setProduct = asyncHandler(async (req, res) => {
     irritatedSkin: req.body.irritatedSkin,
     damagedSkin: req.body.damagedSkin,
   });
+  fs.unlinkSync(path.join(__dirname, "../uploads", req.file.filename));
+
   res.status(200).json(product);
 });
 
@@ -225,7 +240,22 @@ const filterProducts = asyncHandler(async (req, res) => {
 
 //7 uploadImage
 const uploadImage = asyncHandler(async (req, res) => {
-  res.status(200).json("upload Image");
+  console.log(req.file);
+
+  const product = allProducts.create({
+    description: req.body.description,
+    img: {
+      data: fs.readFileSync(
+        path.join(__dirname, "../uploads", req.file.filename)
+      ),
+      contentType: "image/png",
+    },
+  });
+
+  // Remove the file after saving it to the database
+  fs.unlinkSync(path.join(__dirname, "../uploads", req.file.filename));
+
+  res.json(product);
 });
 
 module.exports = {
