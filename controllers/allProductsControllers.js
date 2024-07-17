@@ -13,32 +13,25 @@ const setProduct = asyncHandler(async (req, res) => {
   console.log(req.file);
 
   if (!req.body.productType) {
-    res.status(400).json({ message: "Please add a productType field" });
+    return res.status(400).json({ message: "Please add a productType field" });
   }
   if (!req.body.description) {
-    res.status(400).json({ message: "Please add a description field" });
+    return res.status(400).json({ message: "Please add a description field" });
   }
-  const product = await allProducts.create({
+
+  const productData = {
     productType: req.body.productType,
     description: req.body.description,
     scientificName: req.body.scientificName,
     marketingCompany: req.body.marketingCompany,
     picLink: req.body.picLink,
-    img: {
-      data: fs.readFileSync(
-        path.join(__dirname, "../uploads", req.file.filename)
-      ),
-      contentType: "image/png",
-    },
     publicPrice: req.body.publicPrice,
-    //equipmen
     use: req.body.use,
     strength: req.body.strength,
     strengthUnit: req.body.strengthUnit,
     parts: req.body.parts,
     size: req.body.size,
     sizeUnit: req.body.sizeUnit,
-    //special
     wasfaty: req.body.wasfaty,
     list: req.body.list,
     vitamine: req.body.vitamine,
@@ -53,11 +46,26 @@ const setProduct = asyncHandler(async (req, res) => {
     flushedSkin: req.body.flushedSkin,
     irritatedSkin: req.body.irritatedSkin,
     damagedSkin: req.body.damagedSkin,
-  });
-  fs.unlinkSync(path.join(__dirname, "../uploads", req.file.filename));
+  };
+
+  if (req.file) {
+    productData.img = {
+      data: fs.readFileSync(
+        path.join(__dirname, "../uploads", req.file.filename)
+      ),
+      contentType: "image/png",
+    };
+  }
+
+  const product = await allProducts.create(productData);
+
+  if (req.file) {
+    fs.unlinkSync(path.join(__dirname, "../uploads", req.file.filename));
+  }
 
   res.status(200).json(product);
 });
+
 
 //2
 // @desc    Get getProducts
