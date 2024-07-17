@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+
 // main routes
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/s;pecialArrays", require("./routes/SpecialArrayRoutes"));
