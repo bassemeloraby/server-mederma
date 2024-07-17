@@ -28,8 +28,13 @@ const allProductsSchema = mongoose.Schema(
     use1: {
       type: String,
     },
+    //images
     picLink: {
       type: String,
+    },
+    img: {
+      data: Buffer,
+      contentType: String,
     },
     strength: {
       type: String,
@@ -122,10 +127,6 @@ const allProductsSchema = mongoose.Schema(
     },
     intBarcode1: {
       type: String,
-    },
-    img: {
-      data: Buffer,
-      contentType: String,
     },
   },
   {

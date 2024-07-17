@@ -1,11 +1,9 @@
 const allProducts = require("../models/allProductsModel");
 
 const asyncHandler = require("express-async-handler");
-// const multer = require("multer");
-// const upload = multer({ dest: "../uploads" });
+
 var fs = require("fs");
 var path = require("path");
-// import axios from "axios";
 
 //1
 // @desc    Set product
@@ -25,13 +23,13 @@ const setProduct = asyncHandler(async (req, res) => {
     description: req.body.description,
     scientificName: req.body.scientificName,
     marketingCompany: req.body.marketingCompany,
+    picLink: req.body.picLink,
     img: {
       data: fs.readFileSync(
         path.join(__dirname, "../uploads", req.file.filename)
       ),
       contentType: "image/png",
     },
-    picLink: req.body.picLink,
     publicPrice: req.body.publicPrice,
     //equipmen
     use: req.body.use,
@@ -173,6 +171,7 @@ const getProducts = asyncHandler(async (req, res) => {
           scientificName: 1,
           publicPrice: 1,
           picLink: 1,
+          img:1,
           strength: 1,
           strengthUnit: 1,
           parts: 1,
@@ -233,37 +232,10 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//6
-const filterProducts = asyncHandler(async (req, res) => {
-  res.status(200).json("filter done");
-});
-
-//7 uploadImage
-const uploadImage = asyncHandler(async (req, res) => {
-  console.log(req.file);
-
-  const product = allProducts.create({
-    description: req.body.description,
-    img: {
-      data: fs.readFileSync(
-        path.join(__dirname, "../uploads", req.file.filename)
-      ),
-      contentType: "image/png",
-    },
-  });
-
-  // Remove the file after saving it to the database
-  fs.unlinkSync(path.join(__dirname, "../uploads", req.file.filename));
-
-  res.json(product);
-});
-
 module.exports = {
   setProduct,
   getProducts,
   getOneProduct,
   deleteProduct,
   updateProduct,
-  filterProducts,
-  uploadImage,
 };

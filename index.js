@@ -14,10 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // main routes
-app.use("/api/allDrugs", require("./routes/allDrugsRoutes"));
-app.use("/api/indications", require("./routes/indicationRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/s;pecialArrays", require("./routes/SpecialArrayRoutes"));
 app.use("/api/allProducts", require("./routes/allProductsRoutes"));
 
