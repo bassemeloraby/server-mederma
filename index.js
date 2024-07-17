@@ -16,7 +16,7 @@ app.use(express.json());
 
 // main routes
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/s;pecialArrays", require("./routes/SpecialArrayRoutes"));
+app.use("/api/specialArrays", require("./routes/SpecialArrayRoutes"));
 app.use("/api/allProducts", require("./routes/allProductsRoutes"));
 app.use("/api/indications", require("./routes/indicationRoutes"));
 
