@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "y",
   "version": "1.0.0",
-  "description": "",
+  "description": "git init\r npm init -y\r npm i colors cors dotenv express express-async-handler mongoose\r npm i --save-dev nodemon\r md config,controllers,models,routes\r =============================================\r index.js\r ---------\r const express = require('express');\r const cors = require('cors');\r const colors = require('colors');\r const dotenv = require('dotenv').config();\r const app = express();\r const port = process.env.PORT || '5000';",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
