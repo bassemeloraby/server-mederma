@@ -226,18 +226,37 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @access  public
 const updateProduct = asyncHandler(async (req, res) => {
   const product = await allProducts.findById(req.params.id);
+
   if (!product) {
-    res.status(400).json({ message: "not found" });
-  } else {
-    const updatedProduct = await allProducts.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      }
-    );
-    res.status(200).json(updatedProduct);
+    return res.status(400).json({ message: "Product not found" });
   }
+
+  // Prepare the update data
+  const updatedData = {
+    ...req.body, // Spread the req.body fields into updatedData
+  };
+
+  // If there's a new file (image) uploaded, add the image to the update data
+  if (req.file) {
+    updatedData.img = {
+      data: fs.readFileSync(path.join(__dirname, "../uploads", req.file.filename)),
+      contentType: "image/png",
+    };
+  }
+
+  // Find and update the product
+  const updatedProduct = await allProducts.findByIdAndUpdate(
+    req.params.id,
+    updatedData, // Pass the updated data object
+    { new: true } // Return the updated document
+  );
+
+  // If there was a file, delete it from the uploads folder after reading it
+  if (req.file) {
+    fs.unlinkSync(path.join(__dirname, "../uploads", req.file.filename));
+  }
+
+  res.status(200).json(updatedProduct);
 });
 
 module.exports = {

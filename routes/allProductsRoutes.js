@@ -15,6 +15,6 @@ router.route("/").post(upload.single("file"), setProduct);
 router.route("/").get(getProducts);
 router.route("/:id").get(getOneProduct);
 router.route("/:id").delete(deleteProduct);
-router.route("/:id").patch(updateProduct);
+router.route("/:id").patch(upload.single("file"),updateProduct);
 
 module.exports = router;
