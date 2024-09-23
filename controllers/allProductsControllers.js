@@ -27,6 +27,7 @@ const setProduct = asyncHandler(async (req, res) => {
     picLink: req.body.picLink,
     publicPrice: req.body.publicPrice,
     use: req.body.use,
+    dose: req.body.dose,
     strength: req.body.strength,
     strengthUnit: req.body.strengthUnit,
     parts: req.body.parts,
@@ -65,7 +66,6 @@ const setProduct = asyncHandler(async (req, res) => {
 
   res.status(200).json(product);
 });
-
 
 //2
 // @desc    Get getProducts
@@ -179,7 +179,7 @@ const getProducts = asyncHandler(async (req, res) => {
           scientificName: 1,
           publicPrice: 1,
           picLink: 1,
-          img:1,
+          img: 1,
           strength: 1,
           strengthUnit: 1,
           parts: 1,
@@ -239,7 +239,9 @@ const updateProduct = asyncHandler(async (req, res) => {
   // If there's a new file (image) uploaded, add the image to the update data
   if (req.file) {
     updatedData.img = {
-      data: fs.readFileSync(path.join(__dirname, "../uploads", req.file.filename)),
+      data: fs.readFileSync(
+        path.join(__dirname, "../uploads", req.file.filename)
+      ),
       contentType: "image/png",
     };
   }

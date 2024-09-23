@@ -36,6 +36,9 @@ const allProductsSchema = mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    dose: {
+      type: String,
+    },
     strength: {
       type: String,
     },
