@@ -19,6 +19,7 @@ app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/specialArrays", require("./routes/SpecialArrayRoutes"));
 app.use("/api/allProducts", require("./routes/allProductsRoutes"));
 app.use("/api/indications", require("./routes/indicationRoutes"));
+app.use("/api/products", require("./routes/productsRoutes"));
 
 //test route
 app.get("/", (req, res) => {

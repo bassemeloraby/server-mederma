@@ -13,10 +13,12 @@ const setProduct = asyncHandler(async (req, res) => {
   console.log(req.file);
 
   if (!req.body.productType) {
-    return res.status(400).json({ message: "Please add a productType field" });
+    res.status(400).json({ message: "Please add a productType field" });
+    return;
   }
   if (!req.body.description) {
-    return res.status(400).json({ message: "Please add a description field" });
+    res.status(400).json({ message: "Please add a description field" });
+    return;
   }
 
   const productData = {
