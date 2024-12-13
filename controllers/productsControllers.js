@@ -22,7 +22,12 @@ exports.createProduct = async (req, res) => {
 // Get all products
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Products.find();
+    const products = await Products.find(
+      {},
+      { tradeName: 1, scientificNameOrIngredient: 1, publicPrice: 1, img: 1 }
+    ).sort({
+      tradeName: 1,
+    });
     res.status(200).json(products);
   } catch (error) {
     res
