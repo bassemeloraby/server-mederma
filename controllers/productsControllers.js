@@ -22,13 +22,55 @@ exports.createProduct = async (req, res) => {
 // Get all products
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Products.find(
-      {},
-      { tradeName: 1, scientificNameOrIngredient: 1, publicPrice: 1, img: 1 }
-    ).sort({
+    // const { search } = req.query;
+    const {
+      tradeName,
+      scientificNameOrIngredient,
+      page,
+      limit = 10,
+    } = req.query;
+
+    // Build a dynamic query object
+    const query = {};
+    if (tradeName) {
+      query.tradeName = { $regex: tradeName, $options: "i" }; // Case-insensitive search for tradeName
+    }
+    if (scientificNameOrIngredient) {
+      query.scientificNameOrIngredient = {
+        $regex: scientificNameOrIngredient,
+        $options: "i", // Case-insensitive search for scientificNameOrIngredient
+      };
+    }
+
+    const skip = (page - 1) * limit;
+
+    // Fetch total document count matching the query
+    const totalDocuments = await Products.countDocuments(query);
+
+    // Fetch products based on query and sort
+    const products = await Products.find(query, {
       tradeName: 1,
+      scientificNameOrIngredient: 1,
+      publicPrice: 1,
+      img: 1,
+    })
+      // .sort({
+      //   tradeName: 1,
+      // })
+      .skip(skip)
+      .limit(Number(limit));
+    // const totalPages = products.length / limit;
+    // const total = await Products.countDocuments(query);
+
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(totalDocuments / limit);
+
+    res.status(200).json({
+      products,
+      totalDocuments,
+      totalPages,
+      currentPage: Number(page),
     });
-    res.status(200).json(products);
   } catch (error) {
     res
       .status(500)

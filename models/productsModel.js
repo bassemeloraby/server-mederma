@@ -15,7 +15,7 @@ const productsSchema = mongoose.Schema(
     packageSize: { type: String },
     legalStatus: { type: String },
     distributeArea: { type: String },
-    publicPrice: { type: mongoose.Types.Decimal128 },
+    publicPrice: { type: Number },
     shelfLife: { type: String },
     storageConditions: { type: String },
     marketingCompany: { type: String },
