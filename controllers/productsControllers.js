@@ -26,6 +26,8 @@ exports.getAllProducts = async (req, res) => {
     const {
       tradeName,
       scientificNameOrIngredient,
+      category,
+      subClass,
       page,
       limit = 10,
     } = req.query;
@@ -41,7 +43,12 @@ exports.getAllProducts = async (req, res) => {
         $options: "i", // Case-insensitive search for scientificNameOrIngredient
       };
     }
-
+    if (category) {
+      query.category = { $regex: category, $options: "i" }; // Case-insensitive search for category
+    }
+    if (subClass) {
+      query.subClass = { $regex: subClass, $options: "i" }; // Case-insensitive search for subClass
+    }
     const skip = (page - 1) * limit;
 
     // Fetch total document count matching the query
