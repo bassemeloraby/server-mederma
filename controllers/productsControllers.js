@@ -53,6 +53,7 @@ exports.getAllProducts = async (req, res) => {
       scientificNameOrIngredient: 1,
       publicPrice: 1,
       img: 1,
+      picLink: 1,
     })
       // .sort({
       //   tradeName: 1,

@@ -5,6 +5,8 @@ const productsSchema = mongoose.Schema(
     division: { type: String, required: true },
     category: { type: String, required: true },
     subCategory: { type: String, required: true },
+    class: { type: String, required: true },
+    subClass: { type: String, required: true },
     scientificNameOrIngredient: { type: String, required: true },
     tradeName: { type: String, required: true },
     strength: { type: String },
@@ -26,11 +28,16 @@ const productsSchema = mongoose.Schema(
     sizeUnit: { type: String },
     intBarcode1: { type: String },
     intBarcode2: { type: String },
+    // ----- start picture-------//
     img: {
       data: { type: Buffer },
       contentType: { type: String },
     },
+    picLink: { type: String },
+    // ----- end picture-------//
+
     brandName: { type: String },
+    note: { type: String },
   },
   { timestamps: true }
 );
