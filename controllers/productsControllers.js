@@ -28,6 +28,7 @@ exports.getAllProducts = async (req, res) => {
       scientificNameOrIngredient,
       category,
       subClass,
+      milkCase,
       page,
       limit = 10,
     } = req.query;
@@ -48,6 +49,9 @@ exports.getAllProducts = async (req, res) => {
     }
     if (subClass) {
       query.subClass = { $regex: subClass, $options: "i" }; // Case-insensitive search for subClass
+    }
+    if (milkCase) {
+      query.milkCase = { $regex: milkCase, $options: "i" }; // Case-insensitive search for milkCase
     }
     const skip = (page - 1) * limit;
 
